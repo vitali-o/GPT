@@ -1,1 +1,11 @@
-# GPT
+| NAME              | PROMPT               | DESCRIPTION                     | EXAMPLE                         |
+|-------------------|----------------------|---------------------------------|---------------------------------|
+| app.yaml          | create pod from gcr.io/k8s-k3s/demo:v1.0.0, use labels run and app with values demo. Container listen http port 8000 | A simple Pod running an application with a specified image and port configuration. | [app.yaml](yaml/app.yaml) |
+| app-livenessProbe.yaml | create livenessprobe for this pod | Add liveness probes to pod from app.yaml. | [app-livenessProbe.yaml](yaml/app-livenessProbe.yaml) |
+| app-readinessProbe.yaml | create readiness for this pod | Add readiness probes to pod from app.yaml. | [app-readinessProbe.yaml](yaml/app-readinessProbe.yaml) |
+| app-volumeMounts.yaml | Create pod from gcr.io/kuar-demo/kuard-amd64:1 and name it app, port http, 8080 with readiness and liveness probes. Mount /var/lib/app from host as volume "data" to /data | A Pod using a volume mount and liveness and readiness probes. | [app-volumeMounts.yaml](yaml/app-volumeMounts.yaml) |
+| app-cronjob.yaml | create cronjob. Use container hello from image bash. Print hello world every 5 minutes | A CronJob that runs every 5 minutes and prints "Hello, World!" | [app-cronjob.yaml](yaml/app-cronjob.yaml) |
+| app-job.yaml      | Create rsync job. Sync glow-sportradar bucket with /data/input. Use gcePersistentDisk "glow-data-disk-200" for volume Mounts to /data/input. | A Kubernetes Job that uses `rsync` to sync a Google Cloud Storage bucket with a local directory. | [app-job.yaml](yaml/app-job.yaml) |
+| app-multicontainer.yaml | create pod from debian and nginx. Every second debian should add time to index.html | A Pod with Debian appending time to `index.html` every second, served by Nginx. | [app-multicontainer.yaml](yaml/app-multicontainer.yaml) |
+| app-resources.yaml    | create pod from gcr.io/kuar-demo/kuard-amd64:1 that use http port 8080. Set liveness and readiness probes and set resources | A Pod running kuard with probes and resource requests and limits set. | [app-resources.yaml](yaml/app-resources.yaml) |
+| app-secret-env.yaml    | create pod from redis. Get secrets username and password from pods env variables SECRET_USERNAME and SECRET_PASSWORD | A Pod that runs Redis with username and password stored in Kubernetes Secrets. | [app-secret-env.yaml](yaml/app-secret-env.yaml) |
